@@ -88,6 +88,16 @@ body {
     color: var(--primary-green);
 }
 
+.logo-img {
+    /* STYLES FOR ROUND, CLEAR LOGO */
+    height: 50px;
+    width: 50px;
+    border-radius: 50%; 
+    object-fit: cover;
+    display: block;
+    border: 3px solid var(--accent-yellow); /* Highlight border */
+}
+
 .main-nav ul {
     list-style: none;
     display: flex;
@@ -145,14 +155,16 @@ body {
 /* --- 1.1. Hero Section --- */
 .hero-section {
     position: relative;
-    height: 600px; /* Adjust height as needed */
+    height: 600px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-image: url('placeholder-construction-bg.jpg'); /* INSTRUCTION: Replace with high-res image */
+    /* Uses uploaded image for background */
+    background-image: url('site_inProgress.jpeg'); 
     background-size: cover;
     background-position: center;
+    background-attachment: fixed; 
 }
 
 .hero-image-overlay {
@@ -267,6 +279,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
+    justify-content: center;
 }
 
 .values-list li {
@@ -289,24 +302,37 @@ body {
 
 .service-detail-card {
     background: var(--white);
-    padding: 30px;
     border-radius: 8px;
-    border-top: 5px solid var(--accent-yellow);
+    overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 5px solid var(--primary-green);
 }
 
 .service-detail-card:hover {
-    background-color: var(--light-gray);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-top-color: var(--accent-yellow);
 }
 
-.service-detail-card i {
+.service-image {
+    width: 100%;
+    height: 200px; /* Fixed height for consistency */
+    object-fit: cover; /* Ensures images cover the area without distortion */
+    display: block;
+}
+
+.service-content {
+    padding: 25px;
+}
+
+.service-content i {
     font-size: 2rem;
-    color: var(--primary-green);
+    color: var(--accent-yellow);
     margin-bottom: 15px;
 }
 
-.service-detail-card h3 {
+.service-content h3 {
     color: var(--dark-text);
     margin-bottom: 10px;
 }
@@ -338,10 +364,18 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #666;
-    font-style: italic;
-    font-size: 0.9rem;
     overflow: hidden;
+}
+
+.project-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image-placeholder img {
+    transform: scale(1.05); /* Slight hover zoom effect */
 }
 
 .project-card h3 {
@@ -389,6 +423,13 @@ body {
     overflow: hidden;
 }
 
+.team-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 .team-card h3 {
     color: var(--primary-green);
     margin-bottom: 5px;
@@ -432,6 +473,18 @@ body {
     resize: vertical;
 }
 
+.contact-form-side .btn-secondary {
+    /* Adjust button style for dark background */
+    background-color: var(--accent-yellow);
+    color: var(--dark-text);
+    border-color: var(--accent-yellow);
+}
+
+.contact-form-side .btn-secondary:hover {
+    background-color: var(--white);
+    color: var(--primary-green);
+}
+
 .contact-info-side p {
     margin-bottom: 15px;
     font-size: 1.1rem;
@@ -450,11 +503,7 @@ body {
     background-color: #333;
     margin-top: 30px;
     border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ccc;
-    font-style: italic;
+    overflow: hidden; /* Ensures iframe respects border-radius */
 }
 
 
@@ -521,6 +570,10 @@ body {
         margin: 5px 10px;
     }
 
+    .hero-section {
+        background-attachment: scroll; /* Disable fixed background on mobile */
+    }
+
     .headline {
         font-size: 2.2rem;
     }
@@ -552,95 +605,4 @@ body {
         width: 90%;
         margin-bottom: 10px;
     }
-}
-/* ... existing CSS ... */
-
-/* --- Header & Navigation --- */
-/* ... existing styles ... */
-
-.logo {
-    /* Existing font styling kept as backup if image fails to load */
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--primary-green);
-}
-
-.logo-img {
-    /* UPDATED FOR ROUND SHAPE AND CLARITY */
-    height: 50px; /* Standard size for header logo (Slightly larger) */
-    width: 50px; /* Equal width for a perfect circle */
-    border-radius: 50%; /* Makes the image round */
-    object-fit: cover; /* Ensures the image fills the circular container */
-    display: block;
-    border: 3px solid var(--accent-yellow); /* Added border for better definition/clarity */
-}
-
-/* ... rest of the CSS remains the same ... */
-
-/* ... existing styles ... */
-
-/* --- 1.1. Hero Section --- */
-.hero-section {
-    position: relative;
-    height: 600px; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    /* UPDATED: Using the actual image file name */
-    background-image: url('site_inProgress.jpeg'); 
-    background-size: cover;
-    background-position: center;
-    /* Added fixed attachment for better scroll effect */
-    background-attachment: fixed; 
-}
-/* ... existing hero-image-overlay and hero-content styles ... */
-
-/* --- 4. Projects Section --- */
-/* ... existing project-card styles ... */
-
-.project-image-placeholder {
-    height: 200px;
-    background-color: #ccc;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #666;
-    font-style: italic;
-    font-size: 0.9rem;
-    overflow: hidden;
-}
-
-.project-image-placeholder img {
-    /* Ensure image fills the container */
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Important for maintaining aspect ratio and filling space */
-    transition: transform 0.3s ease;
-}
-
-.project-card:hover .project-image-placeholder img {
-    transform: scale(1.05); /* Slight hover zoom effect */
-}
-
-/* --- Team Section --- */
-/* ... existing team-card styles ... */
-
-.team-image-placeholder {
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
-    margin: 0 auto 20px;
-    background-color: #ddd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.team-image-placeholder img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
 }
